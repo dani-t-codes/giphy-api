@@ -9,7 +9,7 @@ $(document).ready(function () {
     let searchTerm = $('#user-search').val();
 
     let request = new XMLHttpRequest();
-    const url = `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.API_KEY}&limit=1`;
+    const url = `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.API_KEY}&limit=1`;
     console.log(url);
 
     request.onreadystatechange = function () {
