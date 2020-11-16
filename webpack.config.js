@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: "https://austinschrader.github.io/giphy-api/",
   },
   devtool: 'eval-source-map',
   devServer: {
