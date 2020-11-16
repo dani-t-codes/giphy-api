@@ -24,10 +24,7 @@ $(document).ready(function () {
 
     function getElements(response) {
       let gifEmbeddedUrl = response.data[0].embed_url;
-      // console.log(gifEmbeddedUrl);
       let gifUrl = response.data[0].id;
-      // console.log(gifUrl);
-      // $('#results').text(`The gif is ${gifUrl}`);
 
       $('#results').html(
         `<iframe src="${gifEmbeddedUrl}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/${gifUrl}"></a>`
