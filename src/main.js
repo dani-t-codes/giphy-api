@@ -30,7 +30,7 @@ $(document).ready(function () {
       // $('#results').text(`The gif is ${gifUrl}`);
 
       $('#results').html(
-        `<iframe src="${gifEmbeddedUrl}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><><a href="https://giphy.com/gifs/${gifUrl}"></a>`
+        `<iframe src="${gifEmbeddedUrl}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/${gifUrl}"></a>`
       );
     }
   });
