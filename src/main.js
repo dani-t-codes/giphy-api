@@ -10,6 +10,7 @@ $(document).ready(function () {
 
     let request = new XMLHttpRequest();
     const url = `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.API_KEY}&limit=1`;
+    console.log(url);
 
     request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status === 200) {
@@ -23,9 +24,9 @@ $(document).ready(function () {
 
     function getElements(response) {
       let gifEmbeddedUrl = response.data[0].embed_url;
-      console.log(gifEmbeddedUrl);
+      // console.log(gifEmbeddedUrl);
       let gifUrl = response.data[0].id;
-      console.log(gifUrl);
+      // console.log(gifUrl);
       // $('#results').text(`The gif is ${gifUrl}`);
 
       $('#results').html(
