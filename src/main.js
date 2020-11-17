@@ -29,26 +29,30 @@ import './css/styles.css';
 
 // runTrending();
 
-function searchGiphy(url) {
+function searchGiphy(url, num, category) {
   let request = new XMLHttpRequest();
 
   request.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       const response = JSON.parse(this.responseText);
-      getElements(response);
+      getElements(response, num);
     }
   };
 
   request.open('GET', url, true);
   request.send();
 
-  function getElements(response) {
-    let gifEmbeddedUrl = response.data[0].embed_url;
-    let gifUrl = response.data[0].id;
+  function getElements(response, num) {
+    for (let i = 0; i < num; i++) {
+      let gifEmbeddedUrl = response.data[i].embed_url;
+      let gifUrl = response.data[i].id;
 
-    $('#results').html(
-      `<iframe src="${gifEmbeddedUrl}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/${gifUrl}"></a>`
-    );
+      console.log('Hello, this is loop: ' + i);
+
+      $(`#${category}`).append(
+        `<iframe src="${gifEmbeddedUrl}" width="360" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/${gifUrl}"></a>`
+      );
+    }
   }
 }
 
@@ -58,11 +62,11 @@ $(document).ready(function () {
     let searchTerm = $('#user-search').val();
     console.log(searchTerm);
 
-    // const searchUrl = `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.API_KEY}&limit=1`;
-
-    // searchGiphy(searchUrl);
+    const searchUrl = `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.API_KEY}&limit=1`;
+    searchGiphy(searchUrl, 1, 'results');
   });
 
   const trendingUrl = `https://api.giphy.com/v1/gifs/trending?&api_key=${process.env.API_KEY}&limit=3`;
-  searchGiphy(trendingUrl);
+  let num = 3;
+  searchGiphy(trendingUrl, num, 'trending');
 });
