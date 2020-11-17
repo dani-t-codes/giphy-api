@@ -23,6 +23,8 @@ $(document).ready(function () {
 
 
 
+
+
       // function searchGiphy(url, num, category) {
         // function getElements(response, num) {
         //   for (let i = 0; i < num; i++) {
